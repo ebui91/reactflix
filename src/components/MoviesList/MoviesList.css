@@ -1,0 +1,19 @@
+.movies-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.movie-card{
+    width: 342px;
+    margin: 5px;
+    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.8);
+    color: #111;
+}
+
+.movie-card-info{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
