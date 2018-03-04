@@ -17,3 +17,21 @@
     justify-content: space-between;
     align-items: center;
 }
+
+.filters-container{
+    display: flex;
+    flex-direction: column;
+}
+
+.sliders-container{
+    height: 25vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.submit-btn{
+    margin: auto;
+    height: 30px;
+    width: 150px;
+}

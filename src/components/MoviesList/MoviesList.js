@@ -14,9 +14,9 @@ export default class MoviesList extends Component{
             year: {
                 label: "year",
                 min: 1990,
-                max: 2017,
+                max: 2018,
                 step: 1,
-                value: { min: 2000, max: 2017 }
+                value: { min: 2000, max: 2018 }
             },
             rating: {
                 label: "rating",
@@ -28,30 +28,68 @@ export default class MoviesList extends Component{
             runtime: {
                 label: "runtime",
                 min: 0,
-                max: 300,
+                max: 200,
                 step: 15,
                 value: { min: 60, max: 120 }
-            }
+            },
+            genres: [
+                { id: 28, name: "Action" },
+                { id: 12, name: "Adventure" },
+                { id: 16, name: "Animation" },
+                { id: 35, name: "Comedy" },
+                { id: 80, name: "Crime" },
+                { id: 99, name: "Documentary" },
+                { id: 18, name: "Drama" },
+                { id: 10751, name: "Family" },
+                { id: 14, name: "Fantasy" },
+                { id: 36, name: "History" },
+                { id: 27, name: "Horror" },
+                { id: 10402, name: "Music" },
+                { id: 9648, name: "Mystery" },
+                { id: 10749, name: "Romance" },
+                { id: 878, name: "Science Fiction" },
+                { id: 10770, name: "TV Movie" },
+                { id: 53, name: "Thriller" },
+                { id: 10752, name: "War" },
+                { id: 37, name: "Western" }
+            ],
+            selectedGenre: { id: 28, name: "Action" }
         }
         this.onChange= this.onChange.bind(this);
+        this.submitSearch= this.submitSearch.bind(this);
     }
 
     // CDM API call to generate movies
     componentDidMount(){
         axios.get("/api/movies").then(movies=> {
-            console.log(movies.data);
             this.setState({ movieList: movies.data });
         });
     }
 
-    onChange = data => {
-        this.setState({
-          [data.type]: {
-            ...this.state[data.type],
-            value: data.value
-          }
-        });
+    onChange(data){
+        this.setState({ [data.type]: { ...this.state[data.type], value: data.value } });
     };
+
+    handleGenreChange(input){
+        console.log(input);
+        this.setState({ selectedGenre: input })
+    }
+
+    submitSearch(){
+        axios.get("/api/filter", {
+            params: {
+                genre: this.state.selectedGenre.id,
+                yearMin: this.state.year.value.min,
+                yearMax: this.state.year.value.max,
+                ratingMin: this.state.rating.value.min,
+                ratingMax: this.state.rating.value.max,
+                runtimeMin: this.state.runtime.value.min,
+                runtimeMax: this.state.runtime.value.max
+            }
+        }).then(movies=> {
+            console.log(movies.data);
+        });
+    }
 
     render(){
         const imgURL= "http://image.tmdb.org/t/p/w342";
@@ -71,28 +109,42 @@ export default class MoviesList extends Component{
             )
         });
         return(
-            <div className="moviesList-view">
-                <div className="sliders-container">
-                    <Sliders 
-                        onChange={ this.onChange } 
-                        data={ this.state.year } 
-                    />
+            <section className="moviesList-view">
+                <div className="filters-container">
+                <select value={ this.state.genre } onClick={ (e)=> this.handleGenreChange(e.target.value) }>
+                    {
+                        this.state.genres.map(genre=> (
+                            <option key={ genre.id } value={ genre.id }>{ genre.name }</option>
+                        ))
+                    }
+                </select>
 
-                    <Sliders 
-                        onChange={ this.onChange } 
-                        data={ this.state.rating } 
-                    />
+                    <div className="sliders-container">
+                        <Sliders 
+                            onChange={ this.onChange } 
+                            data={ this.state.year } 
+                        />
 
-                    <Sliders 
-                        onChange={ this.onChange } 
-                        data={ this.state.runtime } 
-                    />
+                        <Sliders 
+                            onChange={ this.onChange } 
+                            data={ this.state.rating } 
+                        />
+
+                        <Sliders 
+                            onChange={ this.onChange } 
+                            data={ this.state.runtime } 
+                        />
+                    </div>
+
+                    <button onClick={ ()=> this.submitSearch() } className="btn submit-btn">FIND A MOVIE</button>
                 </div>
+
+                <hr />
 
                 <div className="movies-container">
                     { movies }
                 </div>
-            </div>
+            </section>
         )
     }
 }

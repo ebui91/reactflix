@@ -8,8 +8,7 @@ export default class MovieInfo extends Component {
         super(props);
 
         this.state= {
-            movie: {},
-            genres: []
+            movie: {}
         }
     }
 
@@ -35,14 +34,14 @@ export default class MovieInfo extends Component {
         });
 
         return(
-            <div className="movie-info-view">
+            <section className="movie-info-view">
                 <div className="backdrop-container">
-                    <img className="movie-backdrop" src={backdropURL} />
+                    <img className="movie-backdrop" src={backdropURL} alt="movie-backdrop" />
                 </div>
 
                 <div className="movie-info-container">
                     <h1>{ this.state.movie.title } <span style={{ color:"grey" }}>({ this.state.movie.release_date })</span></h1>
-                    <p>{ this.state.movie.tagline }</p>
+                    <p style={{ fontStyle:"italic" }}>{ this.state.movie.tagline }</p>
                     <p>{ `Rating: ${ this.state.movie.vote_average }/10` }</p>
                     <p>{ `Runtime: ${ this.state.movie.runtime } minutes` }</p>
 
@@ -56,7 +55,7 @@ export default class MovieInfo extends Component {
                 <Link to="/">
                     <p> Back to Home </p>
                 </Link>
-            </div>
+            </section>
         )
     }
 }

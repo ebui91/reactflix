@@ -27,6 +27,29 @@ app.get("/api/details/:id", (req, res, next)=> {
         .catch(console.log);
 });
 
+app.get("/api/filter", (req, res, next)=> {
+    console.log(req.query);
+    console.log(`https://api.themoviedb.org/3/discover/movie?api_key=${process.env.API_KEY}`
+    + `&language=en-US&sort_by=popularity.desc`
+    + `&with_genres=${req.query.genre}`
+    + `&primary_release_date.gte=${req.query.yearMin}-01-01&primary_release_date.lte=${req.query.yearMax}-12-31`
+    + `&vote_average.gte=${req.query.ratingMin}`
+    + `&vote_average.lte=${req.query.ratingMax}`
+    + `&with_runtime.gte=${req.query.runtimeMin}`
+    + `&with_runtime.lte=${req.query.runtimeMax}`)
+
+    axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=${process.env.API_KEY}`
+        + `&language=en-US&sort_by=popularity.desc`
+        + `&with_genres=${req.query.genre}`
+        + `&primary_release_date.gte=${req.query.yearMin}-01-01&primary_release_date.lte=${req.query.yearMax}-12-31`
+        + `&vote_average.gte=${req.query.ratingMin}`
+        + `&vote_average.lte=${req.query.ratingMax}`
+        + `&with_runtime.gte=${req.query.runtimeMin}`
+        + `&with_runtime.lte=${req.query.runtimeMax}`)
+        .then(response=> res.status(200).json(response.data))
+        .catch(console.log);
+});
+
 
 // Server Listening
 app.listen(port, ()=> {
