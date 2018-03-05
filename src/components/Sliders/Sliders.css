@@ -4,21 +4,22 @@
 }
 
 .input-range__slider{
-    background: blue;
+    background: #E50914;
     border: none;
 }
   
 .input-range__track {
-    background: #ddd;
+    background: #333;
 }
   
 .input-range__track--active {
-    background: blue;
+    background: #E50914;
 }
   
 .input-range__label--value .input-range__label-container {
-    background: blue;
-    color: white;
+    background: #E50914;
+    color: #FFF;
+    font-family: Montserrat;
     font-size: 0.65rem;
     padding: 2px 5px;
     border-radius: 3px;
@@ -26,8 +27,9 @@
   
 .input-range__label--min .input-range__label-container, .input-range__label--max .input-range__label-container
 {
+    font-family: Montserrat;
     font-size: 0.65rem;
-    color: #888;
+    color: #DDD;
     left: 0;
 }
   

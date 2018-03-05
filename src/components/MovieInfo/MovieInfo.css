@@ -1,10 +1,42 @@
 .movie-backdrop{
-    height: 85vh;
+    height: 90vh;
     width: 100%;
 }
 
-.genres-container{
+.movie-info-container{
+    min-height: 30vh;
+    padding: 25px;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: flex-start;
+    /* align-items: flex-start;  */
+    flex-wrap: wrap;  
+}
+
+.movie-info-container h1{
+    color: #FEFEFE;
+    font-family: Roboto;
+}
+
+.movie-info-row{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.genre-list{
+    display: flex; 
+    justify-content: space-around; 
+    align-items: flex-start; 
+    color: #FEFEFE;
+    font-family: Montserrat;
+}
+
+.description-container{
+    width: 70%;
+}
+
+.back-btn{
+    margin-left: 25px;
 }

@@ -1,37 +1,109 @@
 .movies-container{
+    width: 90%;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
+    padding: 10px;
 }
 
 .movie-card{
     width: 342px;
-    margin: 5px;
+    margin: 15px;
     box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.8);
-    color: #111;
+    background: #222;
+    color: #F2F2F2;
+}
+
+.movie-card:hover{
+    transition: all ease 0.3s;
+    transform: scale(1.02);
+    box-shadow: 0 0 8px 0 rgba(255, 255, 255, 0.8);
+    z-index: 3;
+}
+
+.movie-card h3{
+    margin: 10px;
+    font-family: Roboto;
+}
+
+.movie-card p{
+    margin: 2px;
+    font-family: Montserrat;
 }
 
 .movie-card-info{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.filters-container{
-    display: flex;
-    flex-direction: column;
-}
-
-.sliders-container{
-    height: 25vh;
+    margin: auto;
     display: flex;
     justify-content: space-around;
     align-items: center;
 }
 
-.submit-btn{
-    margin: auto;
-    height: 30px;
+.info-col{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.filters-container{
+    height: 30vh;
+    width: 90%;
+    padding: 10px;
+    background: #141414;
+    color: #F2F2F2;
+    display: flex;
+    justify-content: space-around;
+    align-items: space-around;
+}
+
+.sliders-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-start;
+}
+
+.genre-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-start;
+    padding: 10px;
+}
+
+.genre-menu{
+    height: 35px;
     width: 150px;
+    background: #333;
+    color: #DDD;
+    font-size: 14px;
+    border: none;
+    outline: none;
+}
+
+.btn{
+    margin: auto;
+    height: 35px;
+    width: 150px;
+    padding: 5px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    letter-spacing: 0.2rem;
+    background: #E50914;
+    color: #F2F2F2;
+    border: none;
+    border-radius: 3px;
+    outline: none;
+}
+
+.btn:hover{
+    transition: all ease 0.5s;
+    cursor: pointer;
+    background: #F40612;
+    color: #FFF;
+}
+
+.loading-animation{
+    width: 100vw;
 }

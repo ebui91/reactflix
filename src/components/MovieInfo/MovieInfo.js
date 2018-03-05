@@ -8,11 +8,12 @@ export default class MovieInfo extends Component {
         super(props);
 
         this.state= {
-            movie: {}
+            movie: {},
+            genres: []
         }
     }
 
-    // CDM makes a call to API to request specific movie info.
+    // Makes a call to API to request movie details for the selected movie.
     componentDidMount(){
         axios.get(`/api/details/${this.props.match.params.id}`)
             .then(response=> {
@@ -25,7 +26,7 @@ export default class MovieInfo extends Component {
         const backdropURL= `http://image.tmdb.org/t/p/w1280${this.state.movie.backdrop_path}`;
         const genres= this.state.genres.map((genre, i)=> {
             return(
-                <p key={i}>{ genre.name } 
+                <p style={{ margin: "5px" }} key={i}>{ genre.name } 
                 {i<this.state.genres.length-1 && (
                     <span> | </span>
                   )
@@ -40,20 +41,32 @@ export default class MovieInfo extends Component {
                 </div>
 
                 <div className="movie-info-container">
-                    <h1>{ this.state.movie.title } <span style={{ color:"grey" }}>({ this.state.movie.release_date })</span></h1>
-                    <p style={{ fontStyle:"italic" }}>{ this.state.movie.tagline }</p>
-                    <p>{ `Rating: ${ this.state.movie.vote_average }/10` }</p>
-                    <p>{ `Runtime: ${ this.state.movie.runtime } minutes` }</p>
+                    <div className="movie-info-row">
+                            <h1 style={{ margin:"0px" }}>
+                                { this.state.movie.title } 
+                                <span style={{ color:"#888" }}> ({ this.state.movie.release_date }) </span>
+                            </h1>
 
-                    <div className="genres-container">
-                        GENRES: { genres }
+                            <p style={{ fontStyle:"italic", color:"#888" }}>"{ this.state.movie.tagline }"</p>
+                            <p style={{ color:"#FEFEFE", margin:"0px" }}>Rating: <span style={{ color:"#888" }}>{ this.state.movie.vote_average }/10</span></p>
+                            <p style={{ color:"#FEFEFE" }}>Runtime: <span style={{ color:"#888" }}>{ this.state.movie.runtime } minutes</span></p>
                     </div>
 
-                    <p>{ this.state.movie.overview }</p>
+                   <div className="movie-info-row">
+                        <div className="genre-list">{ genres }</div>
+                    </div>
+
+                    <div className="description-container">
+                        <p style={{ color:"#888" }}>{ this.state.movie.overview }</p>
+                    </div>
                 </div>
 
                 <Link to="/">
-                    <p> Back to Home </p>
+                    <button className="btn back-btn">
+                        <i class="fas fa-chevron-left"></i>
+                        <i class="fas fa-chevron-left"></i>
+                        &nbsp;BACK
+                    </button>
                 </Link>
             </section>
         )
