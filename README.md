@@ -1,18 +1,21 @@
 # REACTFLIX #
 
 This project utilizes themoviedb.org API, which can be accessed here: https://www.themoviedb.org/documentation/api. 
-A live version of the project can be viewable here:
+<br />
+A live version of the project can be viewable here: http://192.241.222.142:3001/
 
 ![alt text](https://github.com/ebui91/reactflix/blob/master/src/assets/screenshots/main-view.png)
 
 
-You can also fork and clone this repository, and in the source directory, type: 
+To run this application locally, you can also fork and clone this repository. 
+<br />
+To install depencies, navigate to the source directory:
 ```
 npm install --save
 ```
-to install all depencies. 
 
-Navigate to the src/ directory and type:
+
+Start up the React application:
 ```
 cd src/ && npm start 
 ```
@@ -31,12 +34,13 @@ The three Components for this project are:
 - Sliders
 
 I decided not to use Redux for this project because it was fairly small in scale, and managing state was not an issue with only three components.
-Component architecture is a little messy up. For example, the MoviesList component could definitely be more compartmentalized and split up, but since there was a 3 component restriction, it ended up being a bigger component than how I would normally structure my components.
+<br />
+Component architecture is a little messy up. For example, the MoviesList component could definitely be more compartmentalized and split up, but since there was a 3 component restriction, it ended up being a bigger than how I would normally structure my components.
 
 
 
 ### Dependencies ###
-
+A quick rundown of some dependencies I used for this project:
 - react-router: React Router was implemented so that we could render a “detailed view” for movies. With a larger scale project, it would be more useful in rendering additional views.
 - axios: Promise based HTTP client for the browser and node.js
 - jest-mock-axios: used to integrate axios calls with the Jest testing framework.
@@ -52,13 +56,17 @@ I implemented a few unit tests using Jest. The tests can be viewed in the functi
 
 ### Final Thoughts ###
 
-This was a FUN project, and I learned a lot from doing it. I used DOM manipulation for some of the effects/animations. I understand this may be an anti-pattern within React's framework.
+This was a FUN project, and I learned a lot from doing it. I ended up using DOM manipulation for some of the effects/animations. I understand this may be an anti-pattern within React's framework, but it's functional and it looks nice :).
+<br />
 One thing I struggled with was finding out how to render "Now Playing" movies each time the component mounts, but also replace that data whenever the sliders changed. This was difficult due to the way I had everything set up in the submitSearch() method, which was also linked to the nextPage() method used by React-Infinite-Scroll.
-If I had more time, I think I would implement some sort of "store" to keep track of whether or not the query parameters have changed, and then determine whether I need to completely wipe the resultList array to replace with new data, or just append the existing array with more data from pagination.
-Some things I would like to add to this project in the future:
-- fully implement graphQL to hit the API instead of using a normal query
-- I really wanted to make this app mobile responsive, but ran out of time. Certain UI elements made this difficult. 
-- look into other fonts. Roboto and Montserrat are my "safe" fonts, but I would definitely mess around with other fonts if I had more time.
-- Would have liked to add “search” functionality, but that would have required a separate component for the search bar.
-- Would have added a “RANDOM MOVIE” feature if I had more time.
+<br />
+I ended up separating the two data sets and using two different queries for each set of movies. Ideally I would have liked to create a separate component just for receiving and displaying the data, that way I could pass each set of data to the components individually as props.
+<br />
+Here are some things I would have done, or plan on adding in the future:
+- Fully implement GraphQL to hit the API instead of using a normal query.
+- Add a "Random Movie" button that selects a movie randomly from the API (could also be based on the user-input).
+- Search functionality, including a Search Bar. I know how to implement this already, but since I was restricted to just 3 components, I left this feature out.
+- Mobile responsiveness. The app was designed to be a desktop web app. The original UI I came up with was designed to be mobile friendly as well, but I completely redesigned the UI at the last minute. I'm happy with the final result, but would like to make this app mobile friendly as well.
+- Look into other fonts. Roboto and Montserrat are my "safe" fonts, but I would definitely mess around with other fonts if I had more time.
+
 

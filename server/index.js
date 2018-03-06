@@ -13,10 +13,8 @@ const port= process.env.PORT || 3001;
 app.use(json());
 app.use(cors());
 
-// Express serves static files for production build.
-if(process.env.NODE_ENV === 'production') {
-    app.use(express.static('client/build'));
-}
+// Express serves static files for production build.nano 
+app.use( express.static( `${__dirname}/../build` ) );
 
 // Endpoints
 // Get Popular Movies.
@@ -47,6 +45,13 @@ app.get("/api/filter", (req, res, next)=> {
         .then(response=> { console.log(response.data); res.status(200).json(response.data.results)})
         .catch(console.log);
 });
+
+
+// Endpoint for serving index.html file.
+const path = require('path')
+app.get('*', (req, res)=>{
+  res.sendFile(path.join(__dirname, '../build/index.html'));
+})
 
 
 // Server Listening
