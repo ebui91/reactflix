@@ -3,7 +3,8 @@
 This project utilizes themoviedb.org API, which can be accessed here: https://www.themoviedb.org/documentation/api. 
 A live version of the project can be viewable here:
 
-* project pic here*
+![alt text](https://github.com/ebui91/reactflix/blob/master/src/assets/screenshots/main-view.png)
+
 
 You can also fork and clone this repository, and in the source directory, type: 
 ```
@@ -20,6 +21,8 @@ Initialize the server by typing in your console:
 ```
 node server/
 ```
+
+![alt text](https://github.com/ebui91/reactflix/blob/master/src/assets/screenshots/detailed-view.png)
 
 ### Description ###
 The three Components for this project are: 
@@ -44,7 +47,8 @@ Component architecture is a little messy up. For example, the MoviesList compone
 
 ### Unit Testing ###
 I implemented a few unit tests using Jest. The tests can be viewed in the functions.js and functions.test.js files, which are in the src/ directory.
-* testing pic here*
+![alt text](https://github.com/ebui91/reactflix/blob/master/src/assets/screenshots/unit-tests.png)
+
 
 ### Final Thoughts ###
 
