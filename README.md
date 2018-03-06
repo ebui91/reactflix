@@ -25,14 +25,14 @@ Initialize the server by typing in your console:
 node server/
 ```
 
-
+<br />
 ### Description ###
 The three Components for this project are: 
 - MoviesList
 - MovieInfo
 - Sliders
 
-I decided not to use Redux for this project because it was fairly small in scale, and managing state was not an issue with only three components. Component architecture is a little messy up. For example, the MoviesList component could definitely be more compartmentalized and split up, but since there was a 3 component restriction, it ended up being a bigger than how I would normally structure my components.
+I decided not to use Redux for this project because it was fairly small in scale, and managing state was not an issue with only three components. Component architecture is a little messy. For example, the MoviesList component could definitely be more compartmentalized and split up, but since there was a 3 component restriction, it ended up being a bigger than how I would normally structure my components.
 
 ![alt text](https://github.com/ebui91/reactflix/blob/master/src/assets/screenshots/detailed-view.png)
 
@@ -40,7 +40,7 @@ The app is pretty simple. The sliders on the right hand side let you filter movi
 <br />
 Each movie is "clickable" and will redirect you to that movie's detailed view (MovieInfo.js), which gives more information about the selected movie.
 
-
+<br />
 ### Dependencies ###
 A quick rundown of some dependencies I used for this project:
 - react-router: React Router was implemented so that we could render a “detailed view” for movies. With a larger scale project, it would be more useful in rendering additional views.
@@ -50,14 +50,13 @@ A quick rundown of some dependencies I used for this project:
 - react-input-range: InputRange is a React component allowing users to input numeric values within a specific range. It can accept a single value, or a range of values (min/max). By default, basic styles are applied, but can be overridden depending on your design requirements.
 - react-transition-group: helps to apply animations to components by managing their state.
 
-
+<br />
 ### Unit Testing ###
 I implemented a few unit tests using Jest. The tests can be viewed in the functions.js and functions.test.js files, which are in the src/ directory.
 ![alt text](https://github.com/ebui91/reactflix/blob/master/src/assets/screenshots/unit-tests.png)
 
-
+<br />
 ### Final Thoughts ###
-
 This was a FUN project, and I learned a lot from doing it. I ended up using DOM manipulation for some of the effects/animations. I understand this may be an anti-pattern within React's framework, but it's functional and it looks nice :).
 <br />
 One thing I struggled with was finding out how to render "Now Playing" movies each time the component mounts, but also replace that data whenever the sliders changed. This was difficult due to the way I had everything set up in the submitSearch() method, which was also linked to the nextPage() method used by React-Infinite-Scroll.
