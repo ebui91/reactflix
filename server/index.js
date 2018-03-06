@@ -13,6 +13,10 @@ const port= process.env.PORT || 3001;
 app.use(json());
 app.use(cors());
 
+// Express serves static files for production build.
+if(process.env.NODE_ENV === 'production') {
+    app.use(express.static('client/build'));
+}
 
 // Endpoints
 // Get Popular Movies.
