@@ -1,8 +1,11 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { CSSTransitionGroup } from 'react-transition-group';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import Sliders from "../Sliders/Sliders.js";
+import data from "../../genres.js";
+import hover from "./hover.js";
 import "./MoviesList.css";
 
 
@@ -12,20 +15,21 @@ export default class MoviesList extends Component{
 
         this.state= {
             movieList: [],
+            resultList: [],
             page: 1,
             year: {
                 label: "year",
                 min: 1990,
                 max: 2018,
                 step: 1,
-                value: { min: 2016, max: 2018 }
+                value: { min: 2015, max: 2018 }
             },
             rating: {
                 label: "rating",
                 min: 0,
                 max: 10,
                 step: 1,
-                value: { min: 8, max: 10 }
+                value: { min: 7, max: 10 }
             },
             runtime: {
                 label: "runtime",
@@ -34,44 +38,22 @@ export default class MoviesList extends Component{
                 step: 15,
                 value: { min: 60, max: 120 }
             },
-            genres: [
-                { id: 28, name: "Action" },
-                { id: 12, name: "Adventure" },
-                { id: 16, name: "Animation" },
-                { id: 35, name: "Comedy" },
-                { id: 80, name: "Crime" },
-                { id: 99, name: "Documentary" },
-                { id: 18, name: "Drama" },
-                { id: 10751, name: "Family" },
-                { id: 14, name: "Fantasy" },
-                { id: 36, name: "History" },
-                { id: 27, name: "Horror" },
-                { id: 10402, name: "Music" },
-                { id: 9648, name: "Mystery" },
-                { id: 10749, name: "Romance" },
-                { id: 878, name: "Science Fiction" },
-                { id: 10770, name: "TV Movie" },
-                { id: 53, name: "Thriller" },
-                { id: 10752, name: "War" },
-                { id: 37, name: "Western" }
-            ],
+            genres: data.genres,
             selectedGenre: 28
         }
         this.onChange= this.onChange.bind(this);
         this.handleGenreChange= this.handleGenreChange.bind(this);
         this.nextPage= this.nextPage.bind(this);
         this.submitSearch= this.submitSearch.bind(this);
+        this.pushRef= this.pushRef.bind(this);
     }
 
     // API call to generate currently popular movies each time the component mounts.
     componentDidMount(){
         axios.get("/api/movies").then(movies=> {
+            console.log(movies.data);
             this.setState({ movieList: movies.data });
         });
-    }
-
-    componentWillUpdate(){
-        console.log("RESULTS: ", this.state.movieList);
     }
 
     // Method to handle user input for Sliders.
@@ -81,9 +63,10 @@ export default class MoviesList extends Component{
 
     // Method to handle user input for genre dropdown menu.
     handleGenreChange(input){
-        this.setState({ selectedGenre: input })
+        this.setState({ selectedGenre: input });
     }
-
+    
+    // Increments the current value of page and calls the submitSearch method for the next page of results.
     nextPage(){
         setTimeout(() => {
             var page= this.state.page++;
@@ -109,25 +92,23 @@ export default class MoviesList extends Component{
         });
     }
 
+    pushRef(ref){
+        console.log("pushed");
+        hover.addListener(ref);
+    }
+
     render(){
         const imgURL= "http://image.tmdb.org/t/p/w342";
         const movies= this.state.movieList.map((movie, i)=> {
             return(
-                <Link key={i} to={ `/movies/${movie.id}` } style={{ textDecoration: "none" }}>
-                    <div className="movie-card">
-                        <img src={ imgURL + movie.poster_path } alt='movie poster'></img>
-                        <h3>{ movie.original_title }</h3>
+                <Link key={i} to={ `/movies/${movie.id}` } style={{ textDecoration: "none", width: "16%"}}>
+                    <div className="movie-card" data-backdrop={ `http://image.tmdb.org/t/p/w1280${movie.backdrop_path}` } ref={(ref) => { this.movie= ref; this.pushRef(ref); } }>
+                        <img className="movie-poster" src={ imgURL + movie.poster_path } style={{ width:"100%" }} alt="movie poster"></img>
+                        <h4>{ movie.original_title }</h4>
 
                         <div className="movie-card-info">
-                            <div className="info-col">
-                                <p>Release: </p>
-                                <p>{ movie.release_date }</p>
-                            </div>
-                            
-                            <div className="info-col">
-                                <p>Rating: </p>
-                                <p>{ movie.vote_average }/10</p>
-                            </div>
+                            <p>Release: <span>{ movie.release_date.substring(0,4) }</span></p>
+                            <p>Rating: <span>{ movie.vote_average }/10</span></p>
                         </div>
                     </div>
                 </Link>
@@ -136,6 +117,7 @@ export default class MoviesList extends Component{
         return(
             <section className="moviesList-view">
                 <div className="filters-container">
+                    <div className="overlay"></div>
                     <div className="sliders-container">
                         <Sliders 
                             onChange={ this.onChange } 
@@ -163,10 +145,8 @@ export default class MoviesList extends Component{
                             }
                         </select>
 
-                        <button onClick={ ()=> this.submitSearch() } className="btn submit-btn">FIND A MOVIE</button>
+                        <button onClick={ ()=> this.submitSearch() } className="btn submit-btn">FIND MOVIES</button>
                     </div>
-
-                    
                 </div>
                 
                 <InfiniteScroll    
@@ -178,9 +158,9 @@ export default class MoviesList extends Component{
                     }
                     refreshFunction={ this.refresh }
                     next={ ()=> this.nextPage() }
-                    hasMore={true}
+                    hasMore={ true }
                     loader={
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 14 32 4" width="100vw" height="16" fill="#06D6A0" preserveAspectRatio="none">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 14 32 4" width="100vw" height="10" fill="red" preserveAspectRatio="none">
                             <path opacity="0.8" transform="translate(0 0)" d="M2 14 V18 H6 V14z">
                                 <animateTransform attributeName="transform" type="translate" values="0 0; 24 0; 0 0" dur="2s" begin="0" repeatCount="indefinite" keySplines="0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8" calcMode="spline" />
                             </path>
@@ -193,13 +173,17 @@ export default class MoviesList extends Component{
                         </svg>
                     }
                     endMessage={
-                        <p style={{textAlign: 'center'}}>
+                        <p style={{ textAlign: "center" }}>
                             No more movies!
                         </p>
                     }>
-                    <div className="movies-container">
+                    <CSSTransitionGroup
+                        className="movies-container"
+                        transitionName="example"
+                        transitionEnterTimeout={ 500 }
+                        transitionLeaveTimeout={ 300 }>
                         { movies }
-                    </div>     
+                    </CSSTransitionGroup> 
                 </InfiniteScroll>
             </section>
         )

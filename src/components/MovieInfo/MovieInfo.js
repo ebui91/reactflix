@@ -63,8 +63,8 @@ export default class MovieInfo extends Component {
 
                 <Link to="/">
                     <button className="btn back-btn">
-                        <i class="fas fa-chevron-left"></i>
-                        <i class="fas fa-chevron-left"></i>
+                        <i className="fas fa-chevron-left"></i>
+                        <i className="fas fa-chevron-left"></i>
                         &nbsp;BACK
                     </button>
                 </Link>
