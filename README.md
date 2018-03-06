@@ -25,7 +25,7 @@ Initialize the server by typing in your console:
 node server/
 ```
 
-<br />
+
 ### Description ###
 The three Components for this project are: 
 - MoviesList
@@ -40,7 +40,7 @@ The app is pretty simple. The sliders on the right hand side let you filter movi
 <br />
 Each movie is "clickable" and will redirect you to that movie's detailed view (MovieInfo.js), which gives more information about the selected movie.
 
-<br />
+
 ### Dependencies ###
 A quick rundown of some dependencies I used for this project:
 - react-router: React Router was implemented so that we could render a “detailed view” for movies. With a larger scale project, it would be more useful in rendering additional views.
@@ -50,12 +50,12 @@ A quick rundown of some dependencies I used for this project:
 - react-input-range: InputRange is a React component allowing users to input numeric values within a specific range. It can accept a single value, or a range of values (min/max). By default, basic styles are applied, but can be overridden depending on your design requirements.
 - react-transition-group: helps to apply animations to components by managing their state.
 
-<br />
+
 ### Unit Testing ###
 I implemented a few unit tests using Jest. The tests can be viewed in the functions.js and functions.test.js files, which are in the src/ directory.
 ![alt text](https://github.com/ebui91/reactflix/blob/master/src/assets/screenshots/unit-tests.png)
 
-<br />
+
 ### Final Thoughts ###
 This was a FUN project, and I learned a lot from doing it. I ended up using DOM manipulation for some of the effects/animations. I understand this may be an anti-pattern within React's framework, but it's functional and it looks nice :).
 <br />
@@ -67,7 +67,7 @@ Here are some things I would have done, or plan on adding in the future:
 - Fully implement GraphQL to hit the API instead of using a normal query.
 - Add a "Random Movie" button that selects a movie randomly from the API (could also be based on the user-input).
 - Search functionality, including a Search Bar. I know how to implement this already, but since I was restricted to just 3 components, I left this feature out.
-- Mobile responsiveness. The app was designed to be a desktop web app. The original UI I came up with was designed to be mobile friendly as well, but I completely redesigned the UI at the last minute. I'm happy with the final result, but would like to make this app mobile friendly as well.
+- Mobile responsiveness. The app was designed to be a desktop web app. The original UI I came up with was designed to be mobile friendly, but I completely redesigned it at the last minute. I'm happy with the final result, but would like to make this app mobile friendly as well.
 - Look into other fonts. Roboto and Montserrat are my "safe" fonts, but I would definitely mess around with other fonts if I had more time.
 
 
