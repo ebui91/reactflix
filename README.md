@@ -25,7 +25,6 @@ Initialize the server by typing in your console:
 node server/
 ```
 
-![alt text](https://github.com/ebui91/reactflix/blob/master/src/assets/screenshots/detailed-view.png)
 
 ### Description ###
 The three Components for this project are: 
@@ -33,10 +32,13 @@ The three Components for this project are:
 - MovieInfo
 - Sliders
 
-I decided not to use Redux for this project because it was fairly small in scale, and managing state was not an issue with only three components.
-<br />
-Component architecture is a little messy up. For example, the MoviesList component could definitely be more compartmentalized and split up, but since there was a 3 component restriction, it ended up being a bigger than how I would normally structure my components.
+I decided not to use Redux for this project because it was fairly small in scale, and managing state was not an issue with only three components. Component architecture is a little messy up. For example, the MoviesList component could definitely be more compartmentalized and split up, but since there was a 3 component restriction, it ended up being a bigger than how I would normally structure my components.
 
+![alt text](https://github.com/ebui91/reactflix/blob/master/src/assets/screenshots/detailed-view.png)
+
+The app is pretty simple. The sliders on the right hand side let you filter movie results by genre, movie length, runtime, and rating (Sliders.js). There are two rows of data being displayed. The top row being the current movies out in theatres, and the bottom row being movies that are filtered by the search results (MoviesList.js). 
+<br />
+Each movie is "clickable" and will redirect you to that movie's detailed view (MovieInfo.js), which gives more information about the selected movie.
 
 
 ### Dependencies ###
