@@ -6,16 +6,8 @@ import "./App.css";
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <nav>
-          <h1 id="reactflix">REACTFLIX</h1>
-        </nav>
-        
+      <div className="App">        
         { Router }
-
-        <footer>
-          <p style={{ color:"#DEDEDE" }}>FOOTER SECTION</p>
-        </footer>
       </div>
     );
   }

@@ -32,7 +32,7 @@ app.get("/api/details/:id", (req, res, next)=> {
 // Request movies based on certain parameters from front-end. 
 app.get("/api/filter", (req, res, next)=> {
     axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=${process.env.API_KEY}`
-        + `&language=en-US&sort_by=popularity.desc`
+        + `&certification_country=US&sort_by=popularity.desc`
         + `&with_genres=${req.query.genre}`
         + `&primary_release_date.gte=${req.query.yearMin}-01-01&primary_release_date.lte=${req.query.yearMax}-12-31`
         + `&vote_average.gte=${req.query.ratingMin}`
@@ -40,7 +40,7 @@ app.get("/api/filter", (req, res, next)=> {
         + `&with_runtime.gte=${req.query.runtimeMin}`
         + `&with_runtime.lte=${req.query.runtimeMax}`
         + `&page=${req.query.page}`)
-        .then(response=> res.status(200).json(response.data.results))
+        .then(response=> { console.log(response.data); res.status(200).json(response.data.results)})
         .catch(console.log);
 });
 

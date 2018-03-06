@@ -1,6 +1,10 @@
 .slider-container{
-    width: 30vw;
+    width: 15vw;
     margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
 }
 
 .input-range__slider{

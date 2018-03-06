@@ -1,26 +1,37 @@
 .movies-container{
-    width: 100%;
+    position: relative;
+}
+
+.nowplaying-container{
+    /* position: relative; */
+    height: 35vh;
+    width: 80%;
     display: flex;
-    justify-content: space-between;
-    /* align-items: center; */
-    flex-wrap: wrap;
+    align-items: center;
+}
+
+.results-container{
+    /* position: relative; */
+    height: 35vh;
+    width: 80%;
+    display: flex;
+    align-items: center;
 }
 
 .movie-card{
-    width: 100%;
-    padding-bottom: 10px;
+    height: auto;
+    width: 15vw;
+    padding-bottom: 5px;
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.8);
-    background: #222;
+    background: #333;
     color: #F2F2F2;
     overflow: hidden;
 }
 
-/* .movie-card:hover{
-    box-shadow: 0 0 4px 0 rgba(255, 255, 255, 0.8);
-} */
-
-.movie-card:hover .movie-poster{
-    transform: scale(1.05);  
+.movie-card:hover{
+    transition: all ease 0.4s;
+    transform: scale(1.05); 
+    box-shadow: 0 0 20px 0 rgba(255, 255, 255, 0.8);
 }
 
 .movie-card h4{
@@ -35,34 +46,31 @@
 
 .movie-poster {
     transition: all ease-out 0.3s;  
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
-/* .movie-poster:hover {
-    transform: scale(1.02);  
-} */
-
 .movie-card-info{
+    height: 25%;
     margin: auto;
     display: flex;
     justify-content: space-around;
     align-items: center;
 }
 
-.filters-container{
-    height: 50vh;
-    width: 100%;
-    padding: 10px;
-    background: #141414;
-    color: #F2F2F2;
-    display: flex;
-    justify-content: space-around;
-    align-items: space-around;
-    background-size: cover !important;
+.backdrop-container{
     position: relative;
+    top: 0;
+    height: 60vh;
+    width: 80%;
+    padding-bottom: 25px;
+    background-image: url("../../assets/screenshots/netflix-bg.jpg");
+    background-size: cover ;
+    background-position: center;
 }
 
-.filters-container::after {
-    content: '';
+.backdrop-gradient {
+    z-index: 3;
     position: absolute;
     width: 100%;
     height: 100%;
@@ -72,7 +80,31 @@
     background: -moz-linear-gradient(left, #111111 0%, transparent 54%, transparent 100%); /* FF3.6-15 */
     background: -webkit-linear-gradient(left, #111111 0%,transparent 54%,transparent 100%); /* Chrome10-25,Safari5.1-6 */
     background: linear-gradient(to right, #111111 0%, rgba(11, 11, 11, 0.6) 34%,transparent 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#111111', endColorstr='transparent',GradientType=1 ); /* IE6-9 */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#111111", endColorstr="transparent",GradientType=1 ); /* IE6-9 */
+}
+
+.backdrop-text{
+    position: absolute;
+    z-index: 5;
+    top: 50%;
+    left: 5%;
+    opacity: 0;
+    transition: all ease 0.3s;
+}
+
+.filters{
+    height: 100vh;
+    width: 18%;
+    position: fixed;
+    top: 0;
+    right: 0;
+    background: rgba(20, 20, 20, 0.95);
+    color: #F2F2F2;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px;
 }
 
 .overlay{
@@ -83,26 +115,25 @@
     width: 100%;
     z-index: 5;
     opacity: 0;
-    transition: all .18s;
+    transition: all .25s;
 }
 
 .sliders-container{
+    height: 50%;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: flex-start;
     position: relative;
-    z-index: 10;
 }
 
 .genre-container{
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    align-items: flex-start;
+    align-items: center;
     padding: 10px;
     position: relative;
-    z-index: 10
 }
 
 .genre-menu{
@@ -113,6 +144,23 @@
     font-size: 14px;
     border: none;
     outline: none;
+}
+
+#reactflix{
+    margin: 0px;
+    background: #E50914;
+    font-family: BebaseNeue;
+    font-size: 3rem;
+    letter-spacing: 0.5rem;
+    text-shadow: -1px 0 black, 0 1px black, 4px 0 black, 0 -1px black;
+    padding: 5px;
+}
+
+.heading{
+    font-family: Roboto;
+    color: #F2F2F2;
+    margin: 0px;
+    padding: 10px;
 }
 
 .btn{
@@ -142,20 +190,20 @@
 }
 
 /* React Transition Group CSS */
-.example-enter{
+.fade-enter{
     opacity: 0.01;
 }
   
-.example-enter.example-enter-active{
+.fade-enter.fade-enter-active{
     opacity: 1;
+    transition: opacity 750ms ease-in;
+}
+  
+.fade-leave{
+    opacity: 1;
+}
+  
+.fade-leave.fade-leave-active{
+    opacity: 0.01;
     transition: opacity 500ms ease-in;
-}
-  
-.example-leave{
-    opacity: 1;
-}
-  
-.example-leave.example-leave-active{
-    opacity: 0.01;
-    transition: opacity 300ms ease-in;
 }

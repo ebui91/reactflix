@@ -6,26 +6,3 @@
 .App{
     background: #141414;
 }
-
-nav{
-    height: 60px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 5px;
-    font-family: "BebaseNeue"; 
-    background-color: #E50914; 
-    color: #FEFEFE;
-}
-
-footer{
-    height: 20vh;
-    background: #000;
-}
-
-#reactflix{
-    margin: 0px;
-    font-size: 3rem;
-    letter-spacing: 0.5rem;
-    text-shadow: -1px 0 black, 0 1px black, 4px 0 black, 0 -1px black;
-}

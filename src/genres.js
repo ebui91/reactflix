@@ -1,3 +1,5 @@
+// Response from GET genres request to API. 
+// I hard coded this data to save the application from having to make an additional API call just to retrieve a small set of data.
 module.exports= {    
     genres: [
         { id: 28, name: "Action" },

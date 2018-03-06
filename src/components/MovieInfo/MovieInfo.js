@@ -36,8 +36,16 @@ export default class MovieInfo extends Component {
 
         return(
             <section className="movie-info-view">
-                <div className="backdrop-container">
+                <div className="movie-info-backdrop-container">
                     <img className="movie-backdrop" src={backdropURL} alt="movie-backdrop" />
+
+                    <Link to="/">
+                        <button className="btn back-btn">
+                            <i className="fas fa-chevron-left"></i>
+                            <i className="fas fa-chevron-left"></i>
+                            &nbsp;BACK
+                        </button>
+                    </Link>
                 </div>
 
                 <div className="movie-info-container">
@@ -60,14 +68,6 @@ export default class MovieInfo extends Component {
                         <p style={{ color:"#888" }}>{ this.state.movie.overview }</p>
                     </div>
                 </div>
-
-                <Link to="/">
-                    <button className="btn back-btn">
-                        <i className="fas fa-chevron-left"></i>
-                        <i className="fas fa-chevron-left"></i>
-                        &nbsp;BACK
-                    </button>
-                </Link>
             </section>
         )
     }
