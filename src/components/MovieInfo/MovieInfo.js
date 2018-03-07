@@ -7,7 +7,7 @@ export default class MovieInfo extends Component {
     constructor(props){
         super(props);
 
-        this.state= {
+        this.state = {
             movie: {},
             genres: []
         }
@@ -16,21 +16,20 @@ export default class MovieInfo extends Component {
     // Makes a call to API to request movie details for the selected movie.
     componentDidMount(){
         axios.get(`/api/details/${this.props.match.params.id}`)
-            .then(response=> {
+            .then(response => {
                 this.setState({ movie: response.data, genres: response.data.genres });
                 console.log(response.data);
             });
     }
 
     render(){
-        const backdropURL= `http://image.tmdb.org/t/p/w1280${this.state.movie.backdrop_path}`;
-        const genres= this.state.genres.map((genre, i)=> {
+        const backdropURL = `http://image.tmdb.org/t/p/w1280${this.state.movie.backdrop_path}`;
+        const genres = this.state.genres.map((genre, i) => {
             return(
-                <p style={{ margin: "5px" }} key={i}>{ genre.name } 
-                {i<this.state.genres.length-1 && (
-                    <span> | </span>
-                  )
-                }</p> 
+                <p style={{ margin: "5px" }} key={i}>
+                    { genre.name } 
+                    { i<this.state.genres.length-1 && (<span> | </span>) }
+                </p> 
             )
         });
 

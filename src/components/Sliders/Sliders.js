@@ -5,7 +5,7 @@ import "./Sliders.css";
 
 export default class Sliders extends Component {
     // Method to handle user-input from sliders. Takes props from MovieList component to determine which values to change.
-    onChange= range => {
+    onChange = range => {
         this.props.onChange({
           type: this.props.data.label,
           value: range

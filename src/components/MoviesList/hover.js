@@ -11,23 +11,23 @@ export default {
 
 function setBackground(e) {
     // Variable assignments for data attributes from React refs in MoviesList component.
-    const backdrop= e.target.dataset.backdrop;
-    const title= e.target.dataset.title;
-    const desc= e.target.dataset.desc;
+    const backdrop = e.target.dataset.backdrop;
+    const title = e.target.dataset.title;
+    const desc = e.target.dataset.desc;
     
     // Query Selectors for Backdrop elements.
-    const backdropContainer= document.querySelector(".backdrop-container");
-    const backdropText= document.querySelector(".backdrop-text");
-    const backdropTitle= document.querySelector(".backdrop-title");
-    const backdropDesc= document.querySelector(".backdrop-desc");
-    const overlay= document.querySelector(".overlay");
+    const backdropContainer = document.querySelector(".backdrop-container");
+    const backdropText = document.querySelector(".backdrop-text");
+    const backdropTitle = document.querySelector(".backdrop-title");
+    const backdropDesc = document.querySelector(".backdrop-desc");
+    const overlay = document.querySelector(".overlay");
 
-    overlay.style.opacity= "1";
+    overlay.style.opacity = "1";
     setTimeout(() => {
-        backdropContainer.style.background= `url(${ backdrop }) no-repeat`;
-        backdropTitle.innerHTML= title;
-        backdropDesc.innerHTML= desc;
-        backdropText.style.opacity= "1";
-        overlay.style.opacity= "0";
+        backdropContainer.style.background = `url(${ backdrop }) no-repeat`;
+        backdropTitle.innerHTML = title;
+        backdropDesc.innerHTML = desc;
+        backdropText.style.opacity = "1";
+        overlay.style.opacity = "0";
     }, 250);
 }

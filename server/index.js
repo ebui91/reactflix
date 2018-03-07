@@ -1,12 +1,12 @@
 require("dotenv").config();
-const express= require("express");
-const { json }= require("body-parser");
-const cors= require("cors");
-const axios= require("axios");
+const express = require("express");
+const { json } = require("body-parser");
+const cors = require("cors");
+const axios = require("axios");
 
 // Initializing Server
-const app= express();
-const port= process.env.PORT || 3001;
+const app = express();
+const port = process.env.PORT || 3001;
 
 
 // Middlewares
@@ -18,21 +18,22 @@ app.use( express.static( `${__dirname}/../build` ) );
 
 // Endpoints
 // Get Popular Movies.
-app.get("/api/movies", (req, res, next)=> {
+app.get("/api/movies", (req, res, next) => {
+    console.log(req);
     axios.get(`${process.env.API_URL}?api_key=${process.env.API_KEY}`)
-        .then(response=> res.status(200).json(response.data.results))
+        .then(response => res.status(200).json(response.data.results))
         .catch(console.log);
 });
 
 // Get movie details for specific movie.
-app.get("/api/details/:id", (req, res, next)=> {
+app.get("/api/details/:id", (req, res, next) => {
     axios.get(`${process.env.DETAILS_URL}/${req.params.id}?api_key=${process.env.API_KEY}&language=en-US`)
-        .then(response=> res.status(200).json(response.data))
+        .then(response => res.status(200).json(response.data))
         .catch(console.log);
 });
 
 // Request movies based on certain parameters from front-end. 
-app.get("/api/filter", (req, res, next)=> {
+app.get("/api/filter", (req, res, next) => {
     axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=${process.env.API_KEY}`
         + `&certification_country=US&sort_by=popularity.desc`
         + `&with_genres=${req.query.genre}`
@@ -42,19 +43,19 @@ app.get("/api/filter", (req, res, next)=> {
         + `&with_runtime.gte=${req.query.runtimeMin}`
         + `&with_runtime.lte=${req.query.runtimeMax}`
         + `&page=${req.query.page}`)
-        .then(response=> { console.log(response.data); res.status(200).json(response.data.results)})
+        .then(response => { res.status(200).json(response.data.results) })
         .catch(console.log);
 });
 
 
 // Endpoint for serving index.html file.
 const path = require('path')
-app.get('*', (req, res)=>{
+app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../build/index.html'));
 })
 
 
 // Server Listening
-app.listen(port, ()=> {
+app.listen(port, () => {
     console.log(`Server is live on port: ${port}.`);
 });
