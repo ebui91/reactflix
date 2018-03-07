@@ -48,12 +48,12 @@ Each movie is "clickable" and will redirect you to that movie's detailed view (`
 
 ### Dependencies ###
 A quick rundown of some dependencies I used for this project:
-- react-router: React Router was implemented so that I could render a “detailed view” for movies. With a larger scale project, it would be more useful in rendering additional views.
-- axios: Promise based HTTP client for the browser and node.js
-- jest-mock-axios: used to integrate axios calls with the Jest testing framework.
-- react-infinite-scroll-component: super easy built-in infinite scroll component for React
-- react-input-range: InputRange is a React component allowing users to input numeric values within a specific range. It can accept a single value, or a range of values (min/max). By default, basic styles are applied, but can be overridden depending on your design requirements.
-- react-transition-group: helps to apply animations to components by managing their state.
+- `react-router`: React Router was implemented so that I could render a “detailed view” for movies. With a larger scale project, it would be more useful in rendering additional views.
+- `axios`: Promise based HTTP client for the browser and node.js
+- `jest-mock-axios`: used to integrate axios calls with the Jest testing framework.
+- `react-infinite-scroll-component`: super easy built-in infinite scroll component for React
+- `react-input-range`: InputRange is a React component allowing users to input numeric values within a specific range. It can accept a single value, or a range of values (min/max). By default, basic styles are applied, but can be overridden depending on your design requirements.
+- `react-transition-group`: helps to apply animations to components by managing their state.
 
 
 ### Unit Testing ###

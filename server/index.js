@@ -19,7 +19,6 @@ app.use( express.static( `${__dirname}/../build` ) );
 // Endpoints
 // Get Popular Movies.
 app.get("/api/movies", (req, res, next) => {
-    console.log(req);
     axios.get(`${process.env.API_URL}?api_key=${process.env.API_KEY}`)
         .then(response => res.status(200).json(response.data.results))
         .catch(console.log);

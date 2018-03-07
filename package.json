@@ -25,5 +25,6 @@
   },
   "devDependencies": {
     "jest-mock-axios": "^1.0.21"
-  }
+  },
+  "proxy": "http://localhost:3001"
 }
