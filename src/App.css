@@ -3,6 +3,16 @@
     src: url("./assets/fonts/bebas_neue/BebasNeue.otf") format("opentype");
 }
 
+@font-face{
+    font-family: Montserrat;
+    src: url("./assets/fonts/Montserrat/Montserrat-Regular.ttf") format("opentype");
+}
+
+@font-face{
+    font-family: Roboto;
+    src: url("./assets/fonts/Roboto/Roboto-Regular.ttf") format("opentype");
+}
+
 .App{
     background: #141414;
 }
