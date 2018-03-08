@@ -37,7 +37,7 @@ The three Components for this project are:
 - `MovieInfo.js`
 - `Sliders.js`
 
-I decided not to use Redux for this project because it was fairly small in scale, and managing state was not an issue with only three components. Component architecture is a little messy. For example, the MoviesList component could definitely be more compartmentalized and split up, but since there was a 3 component restriction, it ended up being a bit bigger than how I would normally structure my components.
+I decided not to use Redux for this project because it was fairly small in scale, and managing state was not an issue with only three components. Component architecture is a little crowded. For example, the MoviesList component could definitely be more compartmentalized and split up, but since there was a 3 component restriction, it ended up being a bit bigger than how I would normally structure my components.
 
 ![alt text](https://github.com/ebui91/reactflix/blob/master/src/assets/screenshots/detailed-view.png)
 
