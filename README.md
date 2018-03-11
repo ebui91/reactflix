@@ -3,6 +3,8 @@
 This project utilizes themoviedb.org API, which can be accessed here: https://www.themoviedb.org/documentation/api. 
 <br />
 A live version of the project can be viewable here: http://192.241.222.142:3001/
+<br />
+I have also set up a `GraphQL` backend for this project. Repo viewable here: https://github.com/ebui91/reactflix-graphQL-backend
 
 ![alt text](https://github.com/ebui91/reactflix/blob/master/src/assets/screenshots/main-view.png)
 
